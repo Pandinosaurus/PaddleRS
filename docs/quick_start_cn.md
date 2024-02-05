@@ -5,14 +5,13 @@
 ## 环境准备
 
 1. [安装PaddlePaddle](https://www.paddlepaddle.org.cn/install/quick)
-  - 版本要求：PaddlePaddle>=2.2.0
+  - 版本要求：PaddlePaddle>=2.5.0
 
 2. 安装PaddleRS
 
 如果希望获取更加稳定的体验，请下载安装[PaddleRS发行版](https://github.com/PaddlePaddle/PaddleRS/releases)。
 
 ```shell
-pip install -r requirements.txt
 pip install .
 ```
 
@@ -22,7 +21,6 @@ PaddleRS代码会跟随开发进度不断更新，如果希望使用最新功能
 git clone https://github.com/PaddlePaddle/PaddleRS
 cd PaddleRS
 git checkout develop
-pip install -r requirements.txt
 pip install .
 ```
 
@@ -55,37 +53,15 @@ pip install GDAL‑3.3.3‑cp39‑cp39‑win_amd64.whl
 
 4. （可选）安装ext_op
 
-PaddleRS支持旋转目标检测，在使用之前需要安装`ext_op`外部自定义库，安装方式如下：
+PaddleRS支持旋转目标检测，在使用之前需要安装自定义外部算子库`ext_op`，安装方式如下：
+
 ```shell
 cd paddlers/models/ppdet/ext_op
 python setup.py install
 ```
 
 
-除了采用上述安装步骤以外，PaddleRS也提供Docker安装方式。具体步骤如下：
-
-1. 从dockerhub拉取镜像:
-
-```shell
-docker pull paddlepaddle/paddlers:1.0.0  # 暂无
-```
-
-或者，可以选择从头开始构建。通过修改`Dockerfile`文件中的`PPTAG`，可选择PaddlePaddle的多种基础镜像。
-
-```shell
-git clone https://github.com/PaddlePaddle/PaddleRS
-cd PaddleRS
-docker build -t <imageName> .  # 默认使用PaddlePaddle 2.4.1的CPU版本
-# docker build -t <imageName> . --build-arg PPTAG=2.4.1-gpu-cuda10.2-cudnn7.6-trt7.0  # 构建使用GPU版本PaddlePaddle的环境
-# 其余tag可以参考：https://hub.docker.com/r/paddlepaddle/paddle/tags
-```
-
-2. 启动容器
-
-```shell
-docker images  # 查看镜像的ID
-docker run -it <imageID>
-```
+除了采用上述安装步骤以外，PaddleRS也提供Docker安装方式，具体请参考[文档](./docker_cn.md)。
 
 ## 模型训练
 

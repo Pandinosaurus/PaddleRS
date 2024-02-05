@@ -5,7 +5,7 @@
 ## Prerequisites
 
 1. [Install PaddlePaddle](https://www.paddlepaddle.org.cn/install/quick)
-  - Version requirements: PaddlePaddle>=2.2.0
+  - Version requirements: PaddlePaddle>=2.5.0
 
 2. Install PaddleRS
 
@@ -48,37 +48,14 @@ pip install GDAL‑3.3.3‑cp39‑cp39‑win_amd64.whl
 
 4. (Optional) Install ext_op
 
-PaddleRS supports rotated object detection, which requires the installation of the `ext_op` external custom library before use. you need ti install ext_op as follows:
+PaddleRS supports rotated object detection, which requires the installation of the `ext_op` library before use. you need ti install ext_op as follows:
 
 ```shell
 cd paddlers/models/ppdet/ext_op
 python setup.py install
 ```
 
-We also provide a docker image for installation:
-
-1. Pull from dockerhub:
-
-```shell
-docker pull paddlepaddle/paddlers:1.0.0
-```
-
-Optionally, you can build the image from scratch. You can change the base images for different PaddlePaddle versions by setting `PPTAG` in `Dockerfile`.
-
-```shell
-git clone https://github.com/PaddlePaddle/PaddleRS
-cd PaddleRS
-docker build -t <imageName> .  # Default is PaddlePaddle-2.4.1-CPU
-# docker build -t <imageName> . --build-arg PPTAG=2.4.1-gpu-cuda10.2-cudnn7.6-trt7.0  # Use a GPU version of PaddlePaddle
-# For more tags, please refer to: https://hub.docker.com/r/paddlepaddle/paddle/tags
-```
-
-2. Start a container
-
-```shell
-docker images  # View the ID of the image
-docker run -it <imageID>
-```
+We also provide a Docker image for installation. Please see [here](./docker_en.md) for more details.
 
 ## Model Training
 
